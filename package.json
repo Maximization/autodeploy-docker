@@ -1,0 +1,12 @@
+{
+  "name": "autodeploy-docker",
+  "version": "1.0.0",
+  "description": "Sample project used to demonstrate automatic Docker deployments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Maxim Orlov <maximorl@gmail.com> (https://github.com/Maximization)",
+  "license": "MIT"
+}
