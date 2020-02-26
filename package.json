@@ -4,7 +4,7 @@
   "description": "Sample project used to demonstrate automatic Docker deployments",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests\" && exit 0"
   },
   "keywords": [],
   "author": "Maxim Orlov <maximorl@gmail.com> (https://github.com/Maximization)",
