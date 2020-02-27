@@ -4,7 +4,8 @@
   "description": "Sample project used to demonstrate automatic Docker deployments",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests\" && exit 0"
+    "test": "node index.test.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "Maxim Orlov <maximorl@gmail.com> (https://github.com/Maximization)",

@@ -6,13 +6,20 @@ executors:
     docker:
       - image: circleci/node:12.15.0-stretch
 jobs:
-  build:
+  # Install dependencies and run tests
+  build-and-test:
     executor: default-executor
     steps:
       - checkout
+      # Run a set of steps with node dependencies cached
+      # https://circleci.com/orbs/registry/orb/circleci/node#commands-with-cache
       - node/with-cache:
           steps:
             - run: npm ci
+      - run: npm test
+
+  # Build Docker image and push to Docker Hub
+  # Authenticate with Digital Ocean CLI and deploy app
   deploy:
     executor: default-executor
     steps:
@@ -21,15 +28,15 @@ jobs:
 
 workflows:
   version: 2
+  # Workflow name
   build-deploy:
     jobs:
-      - build:
-          filters:
-            branches:
-              only: master
+      - build-and-test
       - deploy:
           requires:
-            - build
+            # Run after all tests have passed
+            - build-and-test
           filters:
             branches:
+              # Only deploy on pushes to the master branch
               only: master
