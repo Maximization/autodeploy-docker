@@ -16,6 +16,7 @@ jobs:
   deploy:
     executor: default-executor
     steps:
+      - checkout
       - run: bash deploy.sh
 
 workflows:
