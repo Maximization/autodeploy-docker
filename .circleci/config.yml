@@ -1,17 +1,23 @@
 version: 2.1
+
+# Use the official Node orb for reusable steps such as "node/with-cache"
 orbs:
   node: circleci/node@1.1.6
+
+# Define reusable executors to avoid duplicating in each job
 executors:
   default-executor:
     docker:
       - image: circleci/node:12.15.0-stretch
+
+# Define jobs
 jobs:
   # Install dependencies and run tests
   build-and-test:
     executor: default-executor
     steps:
       - checkout
-      # Run a set of steps with node dependencies cached
+      # Run a set of steps with node dependencies cached, to speed up build times
       # https://circleci.com/orbs/registry/orb/circleci/node#commands-with-cache
       - node/with-cache:
           steps:
@@ -26,6 +32,7 @@ jobs:
       - checkout
       - run: bash deploy.sh
 
+# Run jobs from above in configurable sequences called workflows
 workflows:
   version: 2
   # Workflow name
