@@ -30,6 +30,8 @@ jobs:
     executor: default-executor
     steps:
       - checkout
+      # Allow using Docker commands
+      - setup_remote_docker
       - run: bash deploy.sh
 
 # Run jobs from above in configurable sequences called workflows
