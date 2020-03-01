@@ -24,10 +24,10 @@ echo "${SERVER_PUBLIC_KEY}" | base64 -d >> ~/.ssh/known_hosts
 
 echo "Deploying via remote SSH"
 ssh -i ssh_key "root@${SERVER_IP}" \
-  docker pull "${IMAGE_NAME}:${IMAGE_TAG}" \
+  "docker pull ${IMAGE_NAME}:${IMAGE_TAG} \
   && docker stop autodeploy-docker \
   && docker rm autodeploy-docker \
-  && docker run --init -d --name autodeploy-docker -p 80:3000 "${IMAGE_NAME}:${IMAGE_TAG}" \
-  && docker system prune -af # remove unused images to free up space
+  && docker run --init -d --name autodeploy-docker -p 80:3000 ${IMAGE_NAME}:${IMAGE_TAG} \
+  && docker system prune -af" # remove unused images to free up space
 
 echo "Successfully deployed, hooray!"
