@@ -13,7 +13,7 @@ http
     res.on('data', (chunk) => (data += chunk));
 
     res.on('end', () => {
-      assert.equal(data, 'hello world');
+      assert.equal(data, 'hello world v2');
       server.close();
     });
   })
