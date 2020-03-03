@@ -1,9 +1,11 @@
-# Introduction
+# Automed Docker deployments
+
 This is a sample project used to demonstrate automating Docker deployments. The accompanying tutorial is at [https://maximorlov.com/automate-your-docker-deployments/](https://maximorlov.com/automate-your-docker-deployments/).
 
 Interesting files to look at are `.circleci/config.yml` and `deploy.sh`.
 
-# Getting started
+## Getting started
+
 1. Clone the repo
 `git clone git@github.com:Maximization/autodeploy-docker.git && cd autodeploy-docker`
 
@@ -12,7 +14,8 @@ Interesting files to look at are `.circleci/config.yml` and `deploy.sh`.
 
 3. Visit `localhost:3000` in your browser
 
-# CircleCI Environment Variables
+## CircleCI Environment Variables
+
 The following environment variables are used in the deployment pipeline:
 
 `DOCKER_USERNAME` - Docker Hub username
@@ -25,12 +28,16 @@ The following environment variables are used in the deployment pipeline:
 
 `SERVER_IP` - Deployment server IP address
 
-# Docker commands
-## Build image
+## Docker commands
+
+### Build image
+
 `docker build --rm -t autodeploy-docker .`
 
-## Run container
+### Run container
+
 `docker run --rm --init -d --name autodeploy-docker -p 3000:3000 autodeploy-docker`
 
-## Clean up after Docker
+### Clean up after Docker
+
 `docker system prune -af`
